@@ -8,19 +8,26 @@ function getComputerMove() {
     return move[Math.floor(Math.random() * 3)];
 }
 
+function compareMoves(userMove, computerMove) {
+    if (userMove === computerMove) {
+        return "It's a tie!";
+    } else if (userMove === "rock" && computerMove === "scissors") {
+        return "You win!";
+    } else if (userMove === "paper" && computerMove === "rock") {
+        return "You win!";
+    } else if (userMove === "scissors" && computerMove === "paper") {
+        return "You win!";
+    } else {
+        return "Computer wins!";
+    }
+}
+
 // User and Computer Move
 const userMove = getUserMove();
 const computerMove = getComputerMove();
 
 // Compare
-if (userMove === computerMove) {
-    console.log("It's a tie");
-} else if (userMove === "rock" && computerMove === "scissors") {
-    console.log("Player wins!");
-} else if (userMove === "paper" && computerMove === "rock") {
-    console.log("Player wins!");
-} else if (userMove === "scissors" && computerMove === "paper") {
-    console.log("Player wins!");
-} else {
-    console.log("Computer wins!");
-}
+const result = compareMoves(userMove, computerMove);
+
+// Result
+console.log(`You chose ${userMove}. Computer chose ${computerMove}. ${result}`);
