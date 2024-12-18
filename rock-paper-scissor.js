@@ -1,9 +1,16 @@
-// User Move
-const userMove = process.argv[2];
+// Functions
+function getUserMove() {
+    return process.argv[2];
+}
 
-// Computer Move
-const move = ["rock", "paper", "scissor"];
-const computerMove = move[Math.floor(Math.random() * 3)];
+function getComputerMove() {
+    const move = ["rock", "paper", "scissor"];
+    return move[Math.floor(Math.random() * 3)];
+}
+
+// User and Computer Move
+const userMove = getUserMove();
+const computerMove = getComputerMove();
 
 // Compare
 if (userMove === computerMove) {
