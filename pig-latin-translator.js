@@ -1,27 +1,32 @@
-// Vowel
-const vowel = ["a", "e", "i", "o", "u"];
+// Functions
+function getUserInput() {
+    return process.argv[2].split(" ");
+}
+
+function translate(str) {
+    const vowel = ["a", "e", "i", "o", "u"];
+    if (!vowel.includes(str[0].toLowerCase()) && !vowel.includes(str[1].toLowerCase())) {
+        return str.slice(2) + str.slice(0, 2) + "ay";
+    } else if (!vowel.includes(str[0].toLowerCase())) {
+        return str.slice(1) + str.slice(0, 1) + "ay";
+    } else {
+        return str + "way";
+    }
+}
+
+function updateCase(str) {
+    if (str[str.length - 3] === str[str.length - 3].toUpperCase() || str[str.length - 4] === str[str.length - 4].toUpperCase()) {
+        return str[0].toUpperCase() + str.slice(1).toLowerCase();
+    } else {
+        return str;
+    }
+}
 
 // User Input
-const strArr = process.argv[2].split(" ");
+const strArr = getUserInput();
 
-// Convert Arr
-const pigArr = strArr.map((str) => {
-    if (vowel.includes(str[0].toLowerCase())) {
-        return str + "way";
-    } else if (!vowel.includes(str[0].toLowerCase()) && !vowel.includes(str[1].toLowerCase())) {
-        if (str[0] === str[0].toUpperCase()) {
-            return str.slice(2) + str.slice(0, 2) + "ay";
-        } else {
-            return str.slice(2) + str.slice(0, 2) + "ay";
-        }
-    } else {
-        if (str[0] === str[0].toUpperCase()) {
-            return str.slice(1, 2).toUpperCase() + (str.slice(2) + str.slice(0, 1)).toLowerCase() + "ay";
-        } else {
-            return str.slice(1) + str.slice(0, 1) + "ay";
-        }
-    }
-});
+// Translate
+const pigLatin = strArr.map((str) => updateCase(translate(str))).join(" ");
 
-console.log(pigArr.join(" "));
 // Log Result
+console.log(pigLatin);
