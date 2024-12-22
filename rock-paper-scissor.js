@@ -5,13 +5,13 @@ function getUserMove() {
 
 function getComputerMove() {
     const move = ["rock", "paper", "scissor"];
-    return move[Math.floor(Math.random() * 3)];
+    return move[Math.floor(Math.random() * move.length)];
 }
 
 function compareMoves(userMove, computerMove) {
     if (userMove === computerMove) {
         return "It's a tie!";
-    } else if (userMove === "rock" && computerMove === "scissors") {
+    } else if (userMove === "rock" && computerMove === "scissor") {
         return "You win!";
     } else if (userMove === "paper" && computerMove === "rock") {
         return "You win!";
