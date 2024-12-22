@@ -5,14 +5,21 @@ const vowel = ["a", "e", "i", "o", "u"];
 const strArr = process.argv[2].split(" ");
 
 // Convert Arr
-// console.log(vowel.includes(strArr[0][1].toLowerCase()));
 const pigArr = strArr.map((str) => {
     if (vowel.includes(str[0].toLowerCase())) {
         return str + "way";
     } else if (!vowel.includes(str[0].toLowerCase()) && !vowel.includes(str[1].toLowerCase())) {
-        return str.slice[2] + str.slice[(0, 2)] + "ay";
+        if (str[0] === str[0].toUpperCase()) {
+            return str.slice(2) + str.slice(0, 2) + "ay";
+        } else {
+            return str.slice(2) + str.slice(0, 2) + "ay";
+        }
     } else {
-        return str.slice[2];
+        if (str[0] === str[0].toUpperCase()) {
+            return str.slice(1, 2).toUpperCase() + (str.slice(2) + str.slice(0, 1)).toLowerCase() + "ay";
+        } else {
+            return str.slice(1) + str.slice(0, 1) + "ay";
+        }
     }
 });
 
