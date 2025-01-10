@@ -9,7 +9,7 @@ function getUserMove() {
         console.error("ERROR: Please pick one of the following moves: Rock, Paper or Scissors!");
         process.exit(1);
     } else if (extraInput) {
-        console.error("ERROR: Please only put one parameter as input!");
+        console.error("ERROR: Please only put one parameter as an input!");
         process.exit(1);
     }
     return userMove;
