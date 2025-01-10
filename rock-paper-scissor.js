@@ -1,22 +1,29 @@
+// Available Moves
+const move = ["rock", "paper", "scissors"];
+
 // Functions
 function getUserMove() {
-    return process.argv[2];
+    const userMove = process.argv[2].toLowerCase();
+    const extraInput = process.argv[3];
+    if (!move.includes(userMove)) {
+        console.error("ERROR: Please pick one of the following moves: Rock, Paper or Scissors!");
+        process.exit(1);
+    } else if (extraInput) {
+        console.error("ERROR: Please only put one parameter as input!");
+        process.exit(1);
+    }
+    return userMove;
 }
 
 function getComputerMove() {
-    const move = ["rock", "paper", "scissor"];
     return move[Math.floor(Math.random() * move.length)];
 }
 
 function compareMoves(userMove, computerMove) {
-    if (userMove === computerMove) {
+    if ((userMove === "rock" && computerMove === "scissors") || (userMove === "paper" && computerMove === "rock") || (userMove === "scissors" && computerMove === "paper")) {
+        return "You win!";
+    } else if (userMove === computerMove) {
         return "It's a tie!";
-    } else if (userMove === "rock" && computerMove === "scissor") {
-        return "You win!";
-    } else if (userMove === "paper" && computerMove === "rock") {
-        return "You win!";
-    } else if (userMove === "scissors" && computerMove === "paper") {
-        return "You win!";
     } else {
         return "Computer wins!";
     }
