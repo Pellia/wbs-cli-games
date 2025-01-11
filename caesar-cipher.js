@@ -1,6 +1,22 @@
 // Functions
 function getUserInput() {
-    return process.argv[2].toLowerCase();
+    const userInput = process.argv.slice(2);
+    checkInput(userInput);
+
+    return [userInput.slice(0, -1).join(" ").toLowerCase(), parseInt(userInput[userInput.length - 1])];
+}
+
+function checkInput(userInput) {
+    if (userInput.length === 0) {
+        console.error("ERROR: No Input given! Please enter a sentence and a number to encrypt.");
+        process.exit();
+    } else if (userInput.length < 2) {
+        console.error("ERROR: Only 1 input given! Please enter a sentence and a number to encrypt.");
+        process.exit();
+    } else if (isNaN(userInput[userInput.length - 1])) {
+        console.error("ERROR: Please Enter a number as the last input!");
+        process.exit();
+    }
 }
 
 function getUserShift() {
@@ -24,10 +40,9 @@ function encryptMsg(message, shift) {
 
 // User Input
 const userInput = getUserInput();
-const userShift = getUserShift();
 
 // Encrypt
-const secretMsg = encryptMsg(userInput, userShift);
+const secretMsg = encryptMsg(userInput[0], userInput[1]);
 
-// Log Result
+// // Log Result
 console.log(secretMsg);
