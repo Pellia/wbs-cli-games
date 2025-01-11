@@ -1,4 +1,5 @@
 // Functions
+// Get User Input
 function getUserInput() {
     const userInput = process.argv.slice(2);
     checkInput(userInput);
@@ -6,6 +7,7 @@ function getUserInput() {
     return [userInput.slice(0, -1).join(" ").toLowerCase(), parseInt(userInput[userInput.length - 1])];
 }
 
+// Check User Input for Errors
 function checkInput(userInput) {
     if (userInput.length === 0) {
         console.error("ERROR: No Input given! Please enter a sentence and a number to encrypt.");
@@ -19,10 +21,7 @@ function checkInput(userInput) {
     }
 }
 
-function getUserShift() {
-    return parseInt(process.argv[3]);
-}
-
+// Encrypt Message
 function encryptMsg(message, shift) {
     let msg = "";
     const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];

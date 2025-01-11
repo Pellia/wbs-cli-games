@@ -1,4 +1,5 @@
 // Functions
+// Get User Input
 function getUserInput() {
     const userInput = process.argv.slice(2);
     checkInput(userInput);
@@ -9,7 +10,7 @@ function getUserInput() {
         return process.argv[2].split(" ");
     }
 }
-
+// Check User Input for Errors
 function checkInput(userInput) {
     if (userInput.length === 0) {
         console.error("ERROR: No Input given! Please enter a sentence to translate.");
@@ -17,6 +18,7 @@ function checkInput(userInput) {
     }
 }
 
+// Translate User Input to Pig Latin
 function translate(str) {
     const vowel = ["a", "e", "i", "o", "u"];
     if (!vowel.includes(str[0].toLowerCase()) && !vowel.includes(str[1].toLowerCase())) {
@@ -28,6 +30,7 @@ function translate(str) {
     }
 }
 
+// Check for letter case
 function updateCase(str) {
     if (str[str.length - 3] === str[str.length - 3].toUpperCase() || str[str.length - 4] === str[str.length - 4].toUpperCase()) {
         return str[0].toUpperCase() + str.slice(1).toLowerCase();
