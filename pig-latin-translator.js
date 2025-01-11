@@ -1,6 +1,20 @@
 // Functions
 function getUserInput() {
-    return process.argv[2].split(" ");
+    const userInput = process.argv.slice(2);
+    checkInput(userInput);
+
+    if (userInput.length > 1) {
+        return userInput;
+    } else {
+        return process.argv[2].split(" ");
+    }
+}
+
+function checkInput(userInput) {
+    if (userInput.length === 0) {
+        console.error("ERROR: No Input given! Please enter a sentence to translate.");
+        process.exit();
+    }
 }
 
 function translate(str) {

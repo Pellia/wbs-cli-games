@@ -5,8 +5,12 @@ const move = ["rock", "paper", "scissors"];
 function getUserMove() {
     const userMove = process.argv[2];
     const extraInput = process.argv[3];
+    checkInput(userMove, extraInput);
 
-    // // Handling of edge cases
+    return userMove.toLowerCase();
+}
+
+function checkInput(userMove, extraInput) {
     if (!userMove) {
         console.error("ERROR: No Move picked! Please pick one of the following moves: Rock, Paper or Scissors!");
         process.exit();
@@ -17,8 +21,6 @@ function getUserMove() {
         console.error("ERROR: Please only put one parameter as an input!");
         process.exit();
     }
-
-    return userMove.toLowerCase();
 }
 
 function getComputerMove() {
